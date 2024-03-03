@@ -1,0 +1,53 @@
+.exRate {
+  position: absolute;
+  height: 400px;
+  width: 1200px;
+  display: flex;
+  top: 201px;
+  left: 300px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+
+.infoBox {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.average {
+  display: flex;
+  flex-direction: column;
+  margin-top: 75%;
+}
+
+.averageTitle {
+  font-weight: 400;
+  font-size: 16px;
+  align-self: center;
+  color: #667985;
+  line-height: 24px;
+}
+
+.averageCount {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: 400;
+  font-size: 48px;
+  align-items: baseline;
+  color: #F38B00;
+  line-height: 72px;
+}
+
+.averageIcon {
+
+  font-weight: 400;
+  font-size: 20px;
+  color: #667985;
+  line-height: 30px;
+}
