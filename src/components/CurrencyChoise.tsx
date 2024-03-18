@@ -2,6 +2,7 @@ import { ChoiceGroup } from "@consta/uikit/ChoiceGroup";
 import { changeValue } from "../redux/reducer";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Strings } from "../appTheme/strings";
+import '../styles/choiceGroup.css'
 
 export const CurrencyChoise = () => {
   type Item = string;
@@ -17,6 +18,7 @@ export const CurrencyChoise = () => {
       multiple={false}
       size="xs"
       name={Strings.choiseName}
+      className={'btn'}
     />
   );
 };

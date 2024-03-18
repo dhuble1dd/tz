@@ -14,6 +14,7 @@ interface strings {
   euroToltipText: string;
   yuanToltipText: string;
   averageTitle: string;
+  switchTitle: string;
 }
 
 export const Strings: strings = {
@@ -32,4 +33,5 @@ export const Strings: strings = {
   euroToltipText: 'Курс евро',
   yuanToltipText: 'Курс юаня',
   averageTitle: 'Среднее за период',
+  switchTitle: 'Тёмная тема',
 }

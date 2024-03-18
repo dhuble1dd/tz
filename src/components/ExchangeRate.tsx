@@ -7,6 +7,7 @@ import '../styles/exchangeRate.css';
 import { useAppSelector } from '../redux/hooks';
 import { Colors } from '../appTheme/colors';
 import { Strings } from '../appTheme/strings';
+import { DarkMode } from './DarkMode';
 
 
 export const ExchangeRate = () => {
@@ -20,6 +21,9 @@ export const ExchangeRate = () => {
   let titleText: string = Strings.mainTitleText
   let tooltipText: string = Strings.mainToltipText
   let average: number = 0
+  let mainTextColor: string = ''
+  let secondaryTextColor: string = ''
+  let backgroundColor: string = ''
   const currency = useAppSelector(state => state.btnValue)
   const dollarList = useAppSelector(state => state.dollarExchangeRateList)
   const euroList = useAppSelector(state => state.euroExchangeRateList)
@@ -27,6 +31,7 @@ export const ExchangeRate = () => {
   const dollarCount = useAppSelector(state => state.countDollarValue)
   const euroCount = useAppSelector(state => state.countEuroValue)
   const yuanCount = useAppSelector(state => state.countYuanValue)
+  const theme = useAppSelector(state => state.theme)
   //изменение графиков и подписей, в зависимости от выбранной кнопки на переключателе
   switch (currency) {
     case Strings.dollarIcon:
@@ -51,12 +56,28 @@ export const ExchangeRate = () => {
       break;
   }
 
+  switch (theme) {
+    case 'light':
+      mainTextColor = Colors.mainTextColor
+      secondaryTextColor = Colors.secondaryTextColor
+      backgroundColor = Colors.mainColor
+      break;
+    case 'dark':
+      mainTextColor = Colors.darkMainTextColor
+      secondaryTextColor = Colors.darkSecondaryTextColor
+      backgroundColor = Colors.darkBackgroundColor
+      break;
+
+    default:
+      break;
+  }
+
   // настройка параметров графика
   const option = {
     title: {
       text: titleText,
       textStyle: {
-        color: Colors.mainTextColor,
+        color: mainTextColor,
         fontWeight: 700,
         fontSize: 20,
         lineHeight: 30
@@ -67,8 +88,8 @@ export const ExchangeRate = () => {
       valueFormatter: (value: string) => value + Strings.rubleIcon,
       textStyle: {
         color: Colors.mainTextColor,
-        fontWeight: 'bold'
-      }
+        fontWeight: 'bold',
+      },
     },
     grid: {
       left: '5%',
@@ -112,7 +133,9 @@ export const ExchangeRate = () => {
       <ReactECharts option={option} />
       <div className={'infoBox'}>
         <Theme preset={presetGpnDefault}>
+          {/*<DarkMode />*/}
           <div className={'btns'}>
+            <DarkMode />
             <CurrencyChoise />
           </div>
         </Theme>

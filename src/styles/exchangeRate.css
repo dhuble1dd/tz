@@ -6,7 +6,7 @@
   top: 201px;
   left: 300px;
   border-radius: 7px;
-  background-color: #fff;
+  background-color: var(--background-color);
 }
 
 .infoBox {
@@ -17,6 +17,7 @@
 
 .btns {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
 }
 
@@ -30,7 +31,7 @@
   font-weight: 400;
   font-size: 16px;
   align-self: center;
-  color: #667985;
+  color: var(--text-color);
   line-height: 24px;
 }
 

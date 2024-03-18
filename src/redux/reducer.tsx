@@ -9,6 +9,16 @@ export interface exchangeRateState {
   name: string
 }
 
+const getTheme = () => {
+  const theme = `${window?.localStorage?.getItem('theme')}`
+  if (['light', 'dark'].includes(theme)) return theme
+
+  const userMedia = window.matchMedia('(prefers-color-scheme: light)')
+  if (userMedia.matches) return 'light'
+
+  return 'light'
+}
+
 export interface exchangeRateListState {
   dollarExchangeRateList: Array<exchangeRateState>
   euroExchangeRateList: Array<exchangeRateState>
@@ -19,6 +29,7 @@ export interface exchangeRateListState {
   countEuroValue: number
   countYuanValue: number
   countValue: number
+  theme: string
 }
 
 const initialState: exchangeRateListState = {
@@ -30,7 +41,8 @@ const initialState: exchangeRateListState = {
   countDollarValue: 0,
   countEuroValue: 0,
   countYuanValue: 0,
-  countValue: 0
+  countValue: 0,
+  theme: getTheme()
 }
 
 
@@ -65,9 +77,12 @@ const RateReducer = createSlice({
     addToCount(state, action) {
       state.countValue = state.countValue + action.payload
     },
+    setTheme(state, action) {
+      state.theme = action.payload
+    },
   }
 })
 
 export default RateReducer.reducer;
 export const { fillDollarList, fillEuroList, fillYuanList, fillList, changeValue,
-  addToCount, addToDollarCount, addToEuroCount, addToYuanCount } = RateReducer.actions;
+  addToCount, addToDollarCount, addToEuroCount, addToYuanCount, setTheme } = RateReducer.actions;
